@@ -24,8 +24,8 @@ TBD...
 0. ~~Design.~~  (Done - Pushed)
 1. ~~Project skeleton.~~  (Done - Pushed)
 2. ~~Add blank Packages for Controller, Service, Repository (redundant- no DB, only in-memory), Model.~~  (Done - Pushed)
-3. Implement Controller REST responses.  (Done - Pushed)
-3.1 Implement Unit tests.   (In process)
-4. Implement service.   (TBD)
-4.1 Implement Unit tests.   (TBD)
-5. TBD...
+3.Implement Controller REST responses.  (Done - Pushed)
+4.Implement Unit tests.   (In process)
+5.Implement service.   (TBD)
+6.Implement Unit tests.   (TBD)
+7.TBD...

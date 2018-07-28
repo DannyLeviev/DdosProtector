@@ -1,8 +1,29 @@
 # DdosProtector
+
 This is a web server protector. 
-It will block the HTTP Client's requests if there were 5 previous requests in the last 5 seconds.
+It will block HTTP Client's requests if there were 5 previous requests in the last 5 seconds.
+
+
 ****
-## Getting Started
+## Used Frameworks/Libraries:
+TBD...
+ 
+ 
+****
+## Installing:
+TBD...
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+****
+## Exposed web APIs:
+TBD...
+
+
+****
+## Pending technical/business BLIs:
+0. ~~Design.~~  (Done - Pushed)
+1. ~~Project skeleton.~~  (Done - Pushed)
+2. Add blank Packages for Controller, Service, Repository (redundant- no DB required), Model.   (In process)
+3. Implement Controller REST resonces.   (TBD)
+4. Implement service.   (TBD)
+5. TBD...

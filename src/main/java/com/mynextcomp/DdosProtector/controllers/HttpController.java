@@ -21,7 +21,7 @@ public class HttpController {
 	}
 
 	@RequestMapping()
-	public ResponseEntity<Void> getRequest(@RequestParam("clientID") int clientID) {
+	public ResponseEntity<Void> getRequest(@RequestParam("clientID") String clientID) {
 		if (ddosProtServ.validateClientRequest(clientID)) {
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}

@@ -26,6 +26,7 @@ TBD...
 2. ~~Add blank Packages for Controller, Service, Repository (redundant- no DB, only in-memory), Model.~~  (Done - Pushed)  
 3. ~~Implement REST Controller responses.~~  (Done - Pushed) 
 4. ~~Implement Unit for REST Controller responses.~~   (Done - Pushed)  
-5. Implement service.   (In process)  
-6. Implement Unit tests.   (TBD)  
-7. TBD...  
+5. ~~Implement service (non-thread safe).~~   (TBD)
+6. Implement thread safe version of service.   (In process)  
+7. Implement Unit tests.   (TBD)  
+8. Finalize.   (TBD)    

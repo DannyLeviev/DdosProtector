@@ -31,16 +31,16 @@ public class HttpControllerTest {
 
 	@Test
 	public void test_Service_Available_Scenario_200() throws Exception {
-		when(ddosProtServ.validateClientRequest("111")).thenReturn(true);
+		when(ddosProtServ.servClientRequest("111")).thenReturn(true);
 		mockMvc.perform(get(URL + "/?clientID=111")).andExpect(status().isOk());
-		verify(ddosProtServ, times(1)).validateClientRequest("111");
+		verify(ddosProtServ, times(1)).servClientRequest("111");
 	}
 
 	@Test
 	public void test_Service_Not_Available_Scenario_503() throws Exception {
-		when(ddosProtServ.validateClientRequest("222")).thenReturn(false);
+		when(ddosProtServ.servClientRequest("222")).thenReturn(false);
 		mockMvc.perform(get(URL + "/?clientID=222")).andExpect(status().isServiceUnavailable());
-		verify(ddosProtServ, times(1)).validateClientRequest("222");
+		verify(ddosProtServ, times(1)).servClientRequest("222");
 	}
 	
 }

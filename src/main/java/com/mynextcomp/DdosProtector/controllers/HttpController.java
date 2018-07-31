@@ -22,10 +22,14 @@ public class HttpController {
 
 	@RequestMapping()
 	public ResponseEntity<Void> getRequest(@RequestParam("clientID") String clientID) {
-		if (ddosProtServ.validateClientRequest(clientID)) {
-			return new ResponseEntity<Void>(HttpStatus.OK);
+		try {
+			if (ddosProtServ.servClientRequest(clientID)) {
+				return new ResponseEntity<Void>(HttpStatus.OK);
+			}
+			return new ResponseEntity<Void>(HttpStatus.SERVICE_UNAVAILABLE);
+		} catch (Exception e) {
+			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<Void>(HttpStatus.SERVICE_UNAVAILABLE);
 	}
 
 }

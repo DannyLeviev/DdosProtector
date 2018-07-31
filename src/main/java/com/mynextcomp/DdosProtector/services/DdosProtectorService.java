@@ -1,30 +1,22 @@
 package com.mynextcomp.DdosProtector.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.concurrent.ExecutionException;
+
 import org.springframework.stereotype.Service;
 
-import com.mynextcomp.DdosProtector.repositories.HttpClientDAO;
+import com.mynextcomp.DdosProtector.cache.HttpClientCache;
 
 @Service
 public class DdosProtectorService {
 
-	private HttpClientDAO clientsRepo;
+	// The lock in the next line no need to bee static as DdosProtectorService is a
+	// singleton.
+	private final Object mutexKey = new Object();
 
-	@Autowired
-	public DdosProtectorService(HttpClientDAO clientsRepo) {
-		this.clientsRepo = clientsRepo;
-	}
-
-	public boolean validateClientRequest(String clientID) {
-		boolean result = false;
-		if(clientsRepo.regiteredClient(clientID)) {
-			result = clientsRepo.tryToServe(clientID);
+	public boolean servClientRequest(String clientID) throws ExecutionException {
+		synchronized (mutexKey) {
+			return !(HttpClientCache.get(clientID) == 5);
 		}
-		else {
-			clientsRepo.register(clientID);
-			result = true;
-		}
-		return result;
 	}
 
 }

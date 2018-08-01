@@ -27,5 +27,6 @@ TBD...
 3. ~~Implement REST Controller responses.~~  (Done - Pushed) 
 4. ~~Implement Unit for REST Controller responses.~~   (Done - Pushed)  
 5. ~~Implement service (non-thread safe).~~   (Done - Pushed)  
-6. Implement thread safe version of service by using Guava Cache.  (In process)  
-8. Test & Finalize.    (TBD)    
+6. ~~Implement thread safe version of service by using Guava Cache.~~   (Done - Pushed)    
+8. Unit Test.  (In process)  
+9. Integration Tests   (TBD)  

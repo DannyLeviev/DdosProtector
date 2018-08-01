@@ -21,7 +21,7 @@ import com.mynextcomp.DdosProtector.services.DdosProtectorService;
 @WebMvcTest(HttpController.class)
 public class HttpControllerTest {
 
-	private static final String URL = "";
+	private static final String URL = "http://localhost:8080/?clientID=";
 
 	@Autowired
 	MockMvc mockMvc;
@@ -32,14 +32,14 @@ public class HttpControllerTest {
 	@Test
 	public void test_Service_Available_Scenario_200() throws Exception {
 		when(ddosProtServ.servClientRequest("111")).thenReturn(true);
-		mockMvc.perform(get(URL + "/?clientID=111")).andExpect(status().isOk());
+		mockMvc.perform(get(URL + "111")).andExpect(status().isOk());
 		verify(ddosProtServ, times(1)).servClientRequest("111");
 	}
 
 	@Test
 	public void test_Service_Not_Available_Scenario_503() throws Exception {
 		when(ddosProtServ.servClientRequest("222")).thenReturn(false);
-		mockMvc.perform(get(URL + "/?clientID=222")).andExpect(status().isServiceUnavailable());
+		mockMvc.perform(get(URL + "222")).andExpect(status().isServiceUnavailable());
 		verify(ddosProtServ, times(1)).servClientRequest("222");
 	}
 	

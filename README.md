@@ -27,7 +27,7 @@ Steps:
 ****
 ## Exposed web APIs:
 After deploying DdosProtector web service available for all HTTP methods on -  
-http://localhost:8080/?clientID=<clientID> 
+http://localhost:8080/?clientID= 
 
 ****
 ## Pending technical/business BLIs:
@@ -38,5 +38,5 @@ http://localhost:8080/?clientID=<clientID>
 4. ~~Implement Unit for REST Controller responses.~~   (Done - Pushed)  
 5. ~~Implement service (non-thread safe).~~   (Done - Pushed)  
 6. ~~Implement thread safe version of service by using Guava Cache.~~   (Done - Pushed)    
-8. ~~Basic Unit Test.  (Done - Pushed)    
-9. ~~Basic Integration Tests. ~~   (Done - Pushed)   
+8. ~~Basic Unit Test.~~  (Done - Pushed)    
+9. ~~Basic Integration Tests.~~    (Done - Pushed)   

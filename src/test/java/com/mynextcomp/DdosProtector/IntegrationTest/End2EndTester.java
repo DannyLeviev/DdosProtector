@@ -23,9 +23,20 @@ public class End2EndTester {
 	@Autowired
 	MockMvc mockMvc;
 
+	//A set of basic (non-concurrent) E2E test
+	
+	
 	@Test
 	public void test_single_200_scenario() throws Exception {
 		mockMvc.perform(get(URL + "111")).andExpect(status().isOk());
+	}
+
+	@Test
+	public void test_503_scenario() throws Exception {
+		for (int i = 0; i < 6; i++) {
+			mockMvc.perform(get(URL + "333")).andExpect(status().isOk());
+		}
+		mockMvc.perform(get(URL + "333")).andExpect(status().isServiceUnavailable());
 	}
 
 	@Test
@@ -37,15 +48,4 @@ public class End2EndTester {
 		mockMvc.perform(get(URL + "222")).andExpect(status().isOk());
 	}
 
-	@Test
-	public void test_503_scenario() throws Exception {
-		for (int i = 0; i < 6; i++) {
-			mockMvc.perform(get(URL + "333")).andExpect(status().isOk());
-		}
-		mockMvc.perform(get(URL + "333")).andExpect(status().isServiceUnavailable());
-	}
-
-	
-	
-	
 }

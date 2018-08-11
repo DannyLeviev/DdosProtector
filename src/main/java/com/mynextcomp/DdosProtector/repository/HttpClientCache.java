@@ -16,13 +16,13 @@ import com.mynextcomp.DdosProtector.model.ClientRequesCounter;
 public class HttpClientCache {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(HttpClientCache.class);
+	private static final String NEW_COUNTER_WAS_CREATED_MSG = "CacheLoader creates a new instance of ClientRequesCounter for clientID = {}";
 
 	private final static LoadingCache<String, ClientRequesCounter> cache = CacheBuilder.newBuilder()
 			.expireAfterWrite(5, TimeUnit.SECONDS).build(new CacheLoader<String, ClientRequesCounter>() {
 				@Override
 				public ClientRequesCounter load(String clientID) throws Exception {
-					LOGGER.info("CacheLoader creates a new instance of ClientRequesCounter for clientID = {}",
-							clientID);
+					LOGGER.info(NEW_COUNTER_WAS_CREATED_MSG, clientID);
 					return new ClientRequesCounter();
 				}
 			});

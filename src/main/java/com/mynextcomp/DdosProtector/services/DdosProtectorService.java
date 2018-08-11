@@ -12,9 +12,10 @@ import com.mynextcomp.DdosProtector.repository.HttpClientCache;
 public class DdosProtectorService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DdosProtectorService.class);
+	private final String SERV_CLIENT_REQUEST_WAS_CALLED_MSG = "DdosProtectorService.servClientRequest() was called for clientID = {}";
 
 	public boolean servClientRequest(String clientID) throws ExecutionException {
-		LOGGER.info("DdosProtectorService.servClientRequest() was called for clientID = {}", clientID);
+		LOGGER.info(SERV_CLIENT_REQUEST_WAS_CALLED_MSG, clientID);
 		return HttpClientCache.get(clientID).incrementAndGet() < 6;
 	}
 

@@ -1,22 +1,31 @@
 package com.mynextcomp.DdosProtector.services;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.locks.ReentrantLock;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.mynextcomp.DdosProtector.model.ClientCallsPool;
 import com.mynextcomp.DdosProtector.repository.HttpClientCache;
 
 @Service
 public class DdosProtectorService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(DdosProtectorService.class);
-	private final String SERV_CLIENT_REQUEST_WAS_CALLED_MSG = "DdosProtectorService.servClientRequest() was called for clientID = {}";
+	private final ReentrantLock lock = new ReentrantLock();
 
 	public boolean servClientRequest(String clientID) throws ExecutionException {
-		LOGGER.info(SERV_CLIENT_REQUEST_WAS_CALLED_MSG, clientID);
-		return HttpClientCache.get(clientID).incrementAndGet() < 6;
+		boolean result = false;
+		ClientCallsPool clientCallsPool = HttpClientCache.getClientCallsPool(clientID);
+		lock.lock();
+		try {
+			if (clientCallsPool.canServe()) {
+				// reset the counter of 5 sec of caching
+				HttpClientCache.put(clientID, clientCallsPool);
+				result = true;
+			}
+		} finally {
+			lock.unlock();
+		}
+		return result;
 	}
-
 }

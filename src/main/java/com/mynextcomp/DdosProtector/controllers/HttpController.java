@@ -15,11 +15,10 @@ import com.mynextcomp.DdosProtector.services.DdosProtectorService;
 @RequestMapping("")
 public class HttpController {
 
-	private final String GET_REQUEST_WAS_CALLED_MSG = "HttpController recognised the request mapping and the getRequest() was called with the parameter {}.";
 	private final String SERV_CLIENT_REQUEST_WAS_CALLED_MSG = "DdosProtectorService.servClientRequest() returned {} for clientID = {}.";
 	private final String SERV_CLIENT_REQUEST_FAILED_MSG = "Calling to the ddosProtServ.servClientRequest(clientID) failed ! {}";
 	private final static Logger LOGGER = LoggerFactory.getLogger(HttpController.class);
-	private DdosProtectorService ddosProtServ;
+	private final DdosProtectorService ddosProtServ;
 
 	@Autowired
 	public HttpController(DdosProtectorService ddosProtServ) {
@@ -28,7 +27,6 @@ public class HttpController {
 
 	@RequestMapping()
 	public ResponseEntity<Void> getRequest(@RequestParam("clientID") String clientID) {
-		LOGGER.info(GET_REQUEST_WAS_CALLED_MSG, clientID);
 		HttpStatus httpStatus;
 		try {
 			if (ddosProtServ.servClientRequest(clientID)) {

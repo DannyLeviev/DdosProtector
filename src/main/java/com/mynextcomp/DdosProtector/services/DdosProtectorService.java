@@ -19,7 +19,7 @@ public class DdosProtectorService {
 		lock.lock();
 		try {
 			if (clientCallsPool.canServe()) {
-				// reset the counter of 5 sec of caching
+				// reset the timer of 5 sec in the cache
 				HttpClientCache.put(clientID, clientCallsPool);
 				result = true;
 			}

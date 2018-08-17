@@ -39,4 +39,6 @@ http://localhost:8080/?clientID=
 5. ~~Implement service (non-thread safe).~~   (Done - Pushed)  
 6. ~~Implement thread safe version of service by using Guava Cache.~~   (Done - Pushed)    
 8. ~~Basic Unit Test.~~  (Done - Pushed)    
-9. ~~Basic Integration Tests.~~    (Done - Pushed)   
+9. ~~Basic Integration Tests.~~    (Done - Pushed)  
+9. ~~Split to secondary branch (moving_timefame_version) .~~    (Done - Pushed)    
+11. ~~Changing the impl to moving time frame (vs static time frame initial impl) + Application Tests.~~    (Done - Pushed)
